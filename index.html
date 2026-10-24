@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Menú Institucional | Fe y Alegría</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Montserrat:wght@400;500;600&display=swap"
+          rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #f8f6f1;
+            color: #292720;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* =========================
+           PORTADA INSTITUCIONAL
+        ========================= */
+
+        .portada {
+            min-height: 100vh;
+            min-height: 100svh;
+            background: linear-gradient(
+                145deg,
+                #101010,
+                #292929,
+                #111111
+            );
+            color: white;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+
+            padding: 45px 25px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portada::before {
+            content: "";
+            position: absolute;
+            inset: 20px;
+            border: 1px solid #a17b43;
+            pointer-events: none;
+        }
+
+        .portada::after {
+            content: "";
+            position: absolute;
+            inset: 28px;
+            border: 1px solid rgba(161, 123, 67, 0.25);
+            pointer-events: none;
+        }
+
+        .portada-contenido {
+            width: 100%;
+            max-width: 700px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+            animation: aparecer 1.2s ease both;
+        }
+
+        .portada-colegio {
+            color: #d4b477;
+            font-size: 12px;
+            letter-spacing: 5px;
+            margin-bottom: 22px;
+        }
+
+        .portada-linea {
+            width: 150px;
+            height: 1px;
+            background: #a17b43;
+            margin: 20px auto;
+        }
+
+        .portada h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(48px, 8vw, 76px);
+            font-weight: 600;
+            line-height: 1.1;
+            letter-spacing: 5px;
+            color: #ffffff;
+        }
+
+        .portada h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(24px, 4vw, 40px);
+            font-weight: 500;
+            letter-spacing: 3px;
+            color: #ffffff;
+        }
+
+        .logo-colegio {
+            width: 190px;
+            height: 190px;
+            object-fit: contain;
+            margin: 25px 0;
+        }
+
+        .portada-pie {
+            color: #d5d0c6;
+            font-size: 10px;
+            letter-spacing: 4px;
+            line-height: 2;
+            margin-top: 5px;
+        }
+
+        .indicador {
+            position: absolute;
+            bottom: 35px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            color: #d4b477;
+            font-size: 9px;
+            letter-spacing: 3px;
+            animation: flotar 2s infinite;
+        }
+
+        .flecha {
+            width: 14px;
+            height: 14px;
+            border-right: 1px solid #d4b477;
+            border-bottom: 1px solid #d4b477;
+            transform: rotate(45deg);
+        }
+
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes flotar {
+            0%, 100% {
+                transform: translate(-50%, 0);
+            }
+            50% {
+                transform: translate(-50%, 7px);
+            }
+        }
+
+        /* =========================
+           ENCABEZADO DEL MENÚ
+        ========================= */
+
+        .encabezado-menu {
+            text-align: center;
+            padding: 55px 20px 40px;
+        }
+
+        .subtitulo {
+            color: #a17b43;
+            font-size: 11px;
+            letter-spacing: 4px;
+            margin-bottom: 15px;
+        }
+
+        .encabezado-menu h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 45px;
+            font-weight: 600;
+            letter-spacing: 4px;
+        }
+
+        .linea {
+            width: 65px;
+            height: 2px;
+            background: #a17b43;
+            margin: 20px auto;
+        }
+
+        .descripcion {
+            color: #777166;
+            font-size: 13px;
+            letter-spacing: 1px;
+        }
+
+        /* =========================
+           ESTRUCTURA DEL MENÚ
+        ========================= */
+
+        .menu {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 10px 25px 60px;
+        }
+
+        .categoria {
+            margin-bottom: 42px;
+        }
+
+        .titulo-categoria {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 18px;
+            margin-bottom: 22px;
+
+            color: #a17b43;
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: 4px;
+            text-align: center;
+        }
+
+        .titulo-categoria::before,
+        .titulo-categoria::after {
+            content: "";
+            flex: 1;
+            max-width: 150px;
+            height: 1px;
+            background: #c7ad85;
+        }
+
+        /* =========================
+           TARJETAS DE COMIDA
+        ========================= */
+
+        .platillo {
+            background: #ffffff;
+            padding: 12px;
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            border: 1px solid #eee8dd;
+            transition: transform 0.3s ease;
+        }
+
+        .platillo:hover {
+            transform: translateY(-3px);
+        }
+
+        /* ESPACIOS PARA FOTOGRAFÍAS */
+
+        .foto {
+            width: 42%;
+            height: 230px;
+            flex-shrink: 0;
+            background: #f3f0e9;
+            border: 1px solid #e4ded2;
+        }
+
+        .informacion {
+            flex: 1;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .nombre {
+            font-family: 'Playfair Display', serif;
+            font-size: 25px;
+            font-weight: 600;
+            color: #292720;
+            line-height: 1.35;
+            overflow-wrap: anywhere;
+        }
+
+        .detalle {
+            width: 45px;
+            height: 2px;
+            background: #a17b43;
+        }
+
+        /* =========================
+           BEBIDAS: DOS COLUMNAS
+        ========================= */
+
+        .bebidas {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+        .bebidas .platillo {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 0;
+        }
+
+        .bebidas .foto {
+            width: 100%;
+            height: 200px;
+        }
+
+        .bebidas .informacion {
+            padding: 18px 8px 12px;
+            gap: 12px;
+        }
+
+        .bebidas .nombre {
+            font-size: 20px;
+        }
+
+        /* =========================
+           PIE DE PÁGINA
+        ========================= */
+
+        footer {
+            text-align: center;
+            padding: 28px 15px;
+            border-top: 1px solid #e4ded2;
+            color: #a17b43;
+            font-size: 10px;
+            letter-spacing: 3px;
+        }
+
+        /* =========================
+           TABLETS
+        ========================= */
+
+        @media (max-width: 800px) {
+            .portada-colegio {
+                letter-spacing: 3px;
+            }
+
+            .logo-colegio {
+                width: 165px;
+                height: 165px;
+            }
+
+            .encabezado-menu h2 {
+                font-size: 38px;
+            }
+
+            .menu {
+                padding: 10px 18px 40px;
+            }
+
+            .foto {
+                width: 40%;
+                height: 190px;
+            }
+
+            .nombre {
+                font-size: 22px;
+            }
+
+            .bebidas .foto {
+                height: 170px;
+            }
+        }
+
+        /* =========================
+           CELULARES
+        ========================= */
+
+        @media (max-width: 500px) {
+            .portada {
+                padding: 35px 20px;
+            }
+
+            .portada::before {
+                inset: 14px;
+            }
+
+            .portada::after {
+                inset: 21px;
+            }
+
+            .portada-colegio {
+                font-size: 10px;
+                letter-spacing: 2px;
+            }
+
+            .portada h1 {
+                letter-spacing: 3px;
+            }
+
+            .portada h2 {
+                letter-spacing: 2px;
+            }
+
+            .logo-colegio {
+                width: 145px;
+                height: 145px;
+                margin: 22px 0;
+            }
+
+            .portada-pie {
+                font-size: 9px;
+                letter-spacing: 3px;
+            }
+
+            .indicador {
+                bottom: 32px;
+            }
+
+            .encabezado-menu {
+                padding: 40px 12px 30px;
+            }
+
+            .encabezado-menu h2 {
+                font-size: 30px;
+                letter-spacing: 2px;
+            }
+
+            .subtitulo {
+                font-size: 9px;
+                letter-spacing: 2px;
+            }
+
+            .descripcion {
+                font-size: 11px;
+            }
+
+            .menu {
+                padding: 10px 12px 35px;
+            }
+
+            .categoria {
+                margin-bottom: 32px;
+            }
+
+            .titulo-categoria {
+                font-size: 19px;
+                letter-spacing: 3px;
+                gap: 10px;
+            }
+
+            /* ENTRADA, PLATO FUERTE Y POSTRE */
+
+            .platillo {
+                padding: 9px;
+                gap: 12px;
+            }
+
+            .foto {
+                width: 40%;
+                height: 140px;
+            }
+
+            .informacion {
+                gap: 11px;
+            }
+
+            .nombre {
+                font-size: 17px;
+            }
+
+            /* BEBIDAS: DOS POR FILA */
+
+            .bebidas {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 12px;
+            }
+
+            .bebidas .platillo {
+                padding: 7px;
+            }
+
+            .bebidas .foto {
+                width: 100%;
+                height: 115px;
+            }
+
+            .bebidas .informacion {
+                padding: 12px 3px 8px;
+                gap: 9px;
+            }
+
+            .bebidas .nombre {
+                font-size: 14px;
+            }
+
+            footer {
+                padding: 22px 10px;
+                font-size: 9px;
+                letter-spacing: 2px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- PORTADA: PRIMERA PANTALLA -->
+
+    <section class="portada">
+
+        <div class="portada-contenido">
+
+            <p class="portada-colegio">
+                COLEGIO FE Y ALEGRÍA
+            </p>
+
+            <div class="portada-linea"></div>
+
+            <h1>MENÚ</h1>
+            <h2>FE Y ALEGRÍA</h2>
+
+            <div class="portada-linea"></div>
+
+            <img
+                src="imagenes1/logo3.png"
+                alt="Logo del Colegio Fe y Alegría"
+                class="logo-colegio"
+            >
+
+            <p class="portada-pie">
+                MENÚ INSTITUCIONAL<br>
+                FE Y ALEGRÍA
+            </p>
+
+        </div>
+
+        <!-- INDICADOR VISUAL: NO ES UN BOTÓN -->
+
+        <div class="indicador" aria-hidden="true">
+            <span>DESLIZA PARA CONTINUAR</span>
+            <div class="flecha"></div>
+        </div>
+
+    </section>
+
+    <!-- MENÚ: APARECE AL DESLIZAR HACIA ABAJO -->
+
+    <header class="encabezado-menu">
+
+        <p class="subtitulo">
+            COLEGIO · FE Y ALEGRÍA
+        </p>
+
+        <h2>NUESTRO MENÚ</h2>
+
+        <div class="linea"></div>
+
+        <p class="descripcion">
+            Una experiencia de sabor y elegancia
+        </p>
+
+    </header>
+
+    <main class="menu">
+
+        <!-- ENTRADA -->
+
+        <section class="categoria">
+
+            <h2 class="titulo-categoria">ENTRADA</h2>
+
+            <article class="platillo">
+
+                <img src="imagenes1/aji de gallina.jpg" alt="Ají de gallina" class="foto">
+
+                <div class="informacion">
+                    <h3 class="nombre">Ají de gallina</h3>
+                    <div class="detalle"></div>
+                </div>
+
+            </article>
+
+        </section>
+
+        <!-- PLATO FUERTE -->
+
+        <section class="categoria">
+
+            <h2 class="titulo-categoria">PLATO FUERTE</h2>
+
+            <article class="platillo">
+
+                <img src="imagenes1/chancho.jpg" alt="chancho" class="foto">
+
+                <div class="informacion">
+                    <h3 class="nombre">Chancho al vino</h3>
+                    <div class="detalle"></div>
+                </div>
+
+            </article>
+
+        </section>
+
+        <!-- POSTRE -->
+
+        <section class="categoria">
+
+            <h2 class="titulo-categoria">POSTRE</h2>
+
+            <article class="platillo">
+
+                <img src="imagenes1/pavlova.jpg" alt="pavlova" class="foto">
+
+                <div class="informacion">
+                    <h3 class="nombre">Pavlova</h3>
+                    <div class="detalle"></div>
+                </div>
+
+            </article>
+
+        </section>
+
+        <!-- BEBIDAS -->
+
+        <section class="categoria">
+
+            <h2 class="titulo-categoria">BEBIDAS</h2>
+
+            <div class="bebidas">
+
+                <article class="platillo">
+
+                    <img src="imagenes1/sunrise.jpg" alt="sunrise" class="foto">
+
+                    <div class="informacion">
+                        <h3 class="nombre">Sunrise</h3>
+                        <div class="detalle"></div>
+                    </div>
+
+                </article>
+
+                <article class="platillo">
+
+                    <img src="imagenes1/pantera rosa.jfif" alt="pantera rosa" class="foto">
+
+                    <div class="informacion">
+                        <h3 class="nombre">Pantera Rosa</h3>
+                        <div class="detalle"></div>
+                    </div>
+
+                </article>
+
+                <article class="platillo">
+
+                    <img src="imagenes1/blue.jpg" alt="blue lagoon" class="foto">
+
+                    <div class="informacion">
+                        <h3 class="nombre">Blue Lagoon</h3>
+                        <div class="detalle"></div>
+                    </div>
+
+                </article>
+
+                <article class="platillo">
+
+                    <img src="imagenes1/paradise.jpg" alt="paradise" class="foto">
+
+                    <div class="informacion">
+                        <h3 class="nombre">Orange Blue Paradise</h3>
+                        <div class="detalle"></div>
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        FE Y ALEGRÍA · EXCELENCIA · TRADICIÓN
+    </footer>
+
+</body>
+</html>
